@@ -1,5 +1,8 @@
 package org.itstep.servlet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +12,11 @@ import java.io.IOException;
 
 @WebServlet("/")
 public class HomeServlet extends HttpServlet {
+    private final Logger LOG = LoggerFactory.getLogger(HomeServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOG.debug("Invoke method doGet " + getServletName());
         req.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(req, resp);
     }
 }
